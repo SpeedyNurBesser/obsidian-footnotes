@@ -33,7 +33,6 @@ export class Autocomplete extends EditorSuggest<RegExpMatchArray> {
             const markdownText = mdView.data;
             
             let reOnlyMarkersMatches = lineText.match(AllMarkers);
-            console.log(reOnlyMarkersMatches)
 
             let markerTarget = null;
             let indexOfMarkerInLine = null;
