@@ -8,3 +8,6 @@ package-lock.json
 
 # build
 *.js.map
+
+# plugin userdata
+data.json

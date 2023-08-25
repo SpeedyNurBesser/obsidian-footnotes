@@ -24,7 +24,7 @@ I personally use:
 
 ![Hotkey](https://user-images.githubusercontent.com/68677082/228659877-8ea81271-37c4-4fdf-99de-1d4b6ca1c85f.png)
 
-## Default Feature Details
+## Feature Details
 ### Numbered Footnotes
 #### Scenario: No previous numbered (e.g. "[^1]") footnotes exist:
 - Given my cursor is where I want a numbered footnote to exist (e.g. `Foo bar baz▊`)
@@ -62,93 +62,15 @@ I personally use:
 - When I hit `auto-numbered footnote hotkey` OR `named footnote hotkey`
 - Then my cursor is placed to the right of the footnote (e.g. `[^1]: ▊`)
 
-### Known Limitations or Untested Scenarios
-#### Indices are not updated
-Inserting new auto-numbered footnote in-between two existing footnotes will insert the next numeric index (e.g. `1, 3, 2`). 
+## More Info
 
-It will NOT update the indices according to their natural order (e.g. `1, 2, 3`). 
+- For more information, please check the [plugin wiki](https://github.com/MichaBrugger/obsidian-footnotes/wiki). 
+  - [Overview of how footnotes work in Obsidian](https://github.com/MichaBrugger/obsidian-footnotes/wiki/Footnote-Functionality)
+  - [Debug Guide](https://github.com/MichaBrugger/obsidian-footnotes/wiki/Debug-Guide)
 
-```markdown
-Example sentence[^1] with two▊ footnotes[^2] already.
-  
-[^1]: Foo
-[^2]: Bar
-```
+## Other Recommended Plugins
 
-After insertion:
-
-```markdown
-Example sentence[^1] with two[^3] footnotes[^2] already.
-  
-[^1]: Foo
-[^2]: Bar
-[^3]: Baz
-```
-
-See "Automatically Re-Index Footnotes" below for a proposed feature
-
-## Future Possible Feature Ideas
-### Suggest Existing Named Footnotes
-When adding a new named footnote, suggest existing footnotes via an EditorSuggest popup. You can pick from the suggestions via arrow keys to save yourself typing if you want to repeat an existing footnote.
-
-**Demo of autosuggest in Templater** ![Suggest](https://user-images.githubusercontent.com/68677082/228691255-f0d8b5ad-f98d-473a-8260-44919c117462.png)
-
-### Automatically Re-Index Numbered Footnotes
-Re-index and re-sort all auto-numbered footnotes when you insert a new one in-between one or more existing numbered footnotes:
-
-```markdown
-Example sentence[^1] with two▊ footnotes[^2] already.
-  
-[^1]: Foo
-[^2]: Bar
-```
-#### Base Scenario
-- Given there are two numbered footnotes already
-- When I enter a new numbered footnote in-between those two
-- Then the NEW footnote gets the index "2" 
-- And the previously second footnote gets the index "3"
-- And the NEW footnote detail is inserted as the second entry at the bottom
-- And the previously second footnote detail at the bottom is updated to be "3"
-- And the previously second footnote detail at the bottom is updated to be in third position
-
-```markdown
-Example sentence[^1] with two[^2] footnotes[^3] already.
-
-[^1]: Foo
-[^2]: Baz
-[^3]: Bar▊
-```
-
-#### Edge Cases to consider ("What if...?")
-##### What if... new footnote is inserted before the first footnote?
-  ```markdown
-  Some sentence▊ with existing note[^1]
-  
-  [^1]: Details
-  ```
-##### What if... text has the same footnote at several places?
-  ```markdown
-  Some sentence with existing note[^1] and the same▊ footnote re-appears later[^1].
-
-  
-  [^1]: Details
-  ```
-##### What if...Footnote details are spread across the text?
-  ```markdown
-  Some sentence with existing note[^1] some more text▊ 
-  
-  [^1]: Inline footnote details
-  
-  Another text part▊
-  ```
-##### What if... the footnote details are multi-line on the bottom?
-  ```markdown
-  Some sentence with existing note[^1] some more text▊ 
-  
-  [^1]: The details that
-  Span across
-  Multiple lines
-  ```
+- If you're looking for the capability to "Automatically Re-Index Footnotes", check out the [Linter plugin](https://github.com/platers/obsidian-linter), which has the ability to re-index all your footnotes based on order of occurrence every time a note is changed or saved. 
 
 ## Background
 This plugin is based on the great idea by [jacob.4ristotle](https://forum.obsidian.md/u/jacob.4ristotle/summary) posted in the ["Footnote Shortcut"](https://forum.obsidian.md/t/footnote-shortcut/8872) thread.
