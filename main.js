@@ -74,9 +74,9 @@ class FootnotePluginSettingTab extends obsidian.PluginSettingTab {
         })));
         new obsidian.Setting(containerEl)
             .setName("Footnote Section Heading")
-            .setDesc("Heading to place above footnotes section (Supports Markdown formatting). Heading will be H1 size.")
+            .setDesc("Heading to place above footnotes section (Supports Markdown formatting).")
             .addText((text) => text
-            .setPlaceholder("Heading is Empty")
+            .setPlaceholder("Heading is Empty - e.g.: '# Footnotes:'")
             .setValue(this.plugin.settings.FootnoteSectionHeading)
             .onChange((value) => __awaiter(this, void 0, void 0, function* () {
             this.plugin.settings.FootnoteSectionHeading = value;
@@ -206,7 +206,7 @@ function addFootnoteSectionHeader(plugin) {
     //if so, return the "Footnote Section Heading"
     // else, return ""
     if (plugin.settings.enableFootnoteSectionHeading == true) {
-        let returnHeading = `\n# ${plugin.settings.FootnoteSectionHeading}`;
+        let returnHeading = `\n${plugin.settings.FootnoteSectionHeading}`;
         return returnHeading;
     }
     return "";
